@@ -1,6 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
-import Header from "@/CustomComponents/Website/Includes/Header.jsx";
-import Footer from "@/CustomComponents/Website/Includes/Footer.jsx";
+import Header from "@/Website/Components/Header.jsx";
+import Footer from "@/Website/Components/Footer.jsx";
+
 
 export default function Home({ auth }) {
     return (
