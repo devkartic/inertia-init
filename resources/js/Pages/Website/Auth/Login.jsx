@@ -35,20 +35,28 @@ export default function Login({status, canResetPassword}) {
             <form onSubmit={submit}>
                 <div className="form-floating mb-3">
                     <TextInput type="email" name="email" className="form-control" id="floatingEmail" autoComplete="email" value={data.email} onChange={(e) => setData('email', e.target.value)}/>
-                    <label htmlFor="floatingEmail">Email</label>
+                    <InputLabel htmlFor="floatingEmail">Email</InputLabel>
                     <InputError className="form-text text-danger" message={errors.email}/>
                 </div>
                 <div className="form-floating mb-3 ">
                     <TextInput type="password" className="form-control" id="floatingPassword" autoComplete="current-password" value={data.password} onChange={(e) => setData('password', e.target.value)}/>
-                    <label htmlFor="floatingPassword">Password</label>
+                    <InputLabel htmlFor="floatingPassword">Password</InputLabel>
                     <InputError className="form-text text-danger" message={errors.password}/>
                 </div>
                 <div className="mb-3 form-check">
-                    <Checkbox name="remember" className="form-check-input" checked={data.remember} onChange={(e) => setData('remember', e.target.checked)}/>
-                    <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
+                    <Checkbox name="remember" className="form-check-input" id="rememberCheck" checked={data.remember} onChange={(e) => setData('remember', e.target.checked)}/>
+                    <InputLabel className="form-check-label" htmlFor="rememberCheck">Remember me</InputLabel>
                 </div>
-                <PrimaryButton className="btn btn-primary px-4" disabled={processing}>Sign In</PrimaryButton>
+                <div className="mb-3 form-label">
+                    <Link className="text-decoration-none" href={route('password.request')}>Forgot your password?</Link>
+                </div>
+                <div className="d-grid">
+                    <PrimaryButton className="btn btn-primary px-md-4" disabled={processing}>Log In</PrimaryButton>
+                </div>
             </form>
+            <div className="mt-3">
+                <Link className="text-decoration-none" href={route('register')}>Register a new membership?</Link>
+            </div>
         </GuestLayout>
     );
 }
