@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
+import GuestLayout from '@/Admin/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import Checkbox from "@/Components/Checkbox.jsx";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -31,87 +32,35 @@ export default function Register() {
             <Head title="Register" />
 
             <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
-                    <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        onChange={(e) => setData('name', e.target.value)}
-                        required
-                    />
-
-                    <InputError message={errors.name} className="mt-2" />
+                <div className="form-floating mb-3">
+                    <TextInput type="text" name="name" className="form-control" id="floatingName" autoComplete="name" value={data.name} onChange={(e) => setData('name', e.target.value)}/>
+                    <label htmlFor="floatingName">Name</label>
+                    <InputError className="form-text text-danger" message={errors.name}/>
                 </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData('email', e.target.value)}
-                        required
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
+                <div className="form-floating mb-3">
+                    <TextInput type="email" name="email" className="form-control" id="floatingEmail" autoComplete="email" value={data.email} onChange={(e) => setData('email', e.target.value)}/>
+                    <label htmlFor="floatingEmail">Email</label>
+                    <InputError className="form-text text-danger" message={errors.email}/>
                 </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={(e) => setData('password', e.target.value)}
-                        required
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
+                <div className="form-floating mb-3 ">
+                    <TextInput type="password" className="form-control" id="floatingPassword" autoComplete="new-password" value={data.password} onChange={(e) => setData('password', e.target.value)}/>
+                    <label htmlFor="floatingPassword">Password</label>
+                    <InputError className="form-text text-danger" message={errors.password}/>
                 </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
-
-                    <TextInput
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={(e) => setData('password_confirmation', e.target.value)}
-                        required
-                    />
-
-                    <InputError message={errors.password_confirmation} className="mt-2" />
+                <div className="form-floating mb-3 ">
+                    <TextInput type="password" className="form-control" id="password_confirmation" autoComplete="new-password" value={data.password_confirmation} onChange={(e) => setData('password_confirmation', e.target.value)}/>
+                    <label htmlFor="password_confirmation">Password</label>
+                    <InputError className="form-text text-danger" message={errors.password_confirmation}/>
                 </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href={route('login')}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already registered?
-                    </Link>
-
-                    <PrimaryButton className="ml-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
+                <div className="mb-3 form-check">
+                    <Checkbox name="remember" className="form-check-input"/>
+                    <label className="form-check-label" htmlFor="exampleCheck1">I agree to the terms</label>
                 </div>
+                <PrimaryButton className="btn btn-primary px-4" disabled={processing}>Register</PrimaryButton>
             </form>
+            <div className="mt-3">
+                <Link className="text-decoration-none" href="#">I already have a membership ?</Link>
+            </div>
         </GuestLayout>
     );
 }

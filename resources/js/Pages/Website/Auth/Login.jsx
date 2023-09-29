@@ -34,14 +34,14 @@ export default function Login({status, canResetPassword}) {
 
             <form onSubmit={submit}>
                 <div className="form-floating mb-3">
-                    <TextInput type="email" name="email" className="form-control" id="floatingInput" autoComplete="username" value={data.email} onChange={(e) => setData('email', e.target.value)}/>
-                    <label htmlFor="floatingInput">Email</label>
-                    <InputError className="form-text" message={errors.email}/>
+                    <TextInput type="email" name="email" className="form-control" id="floatingEmail" autoComplete="email" value={data.email} onChange={(e) => setData('email', e.target.value)}/>
+                    <label htmlFor="floatingEmail">Email</label>
+                    <InputError className="form-text text-danger" message={errors.email}/>
                 </div>
                 <div className="form-floating mb-3 ">
                     <TextInput type="password" className="form-control" id="floatingPassword" autoComplete="current-password" value={data.password} onChange={(e) => setData('password', e.target.value)}/>
                     <label htmlFor="floatingPassword">Password</label>
-                    <InputError className="form-text" message={errors.password}/>
+                    <InputError className="form-text text-danger" message={errors.password}/>
                 </div>
                 <div className="mb-3 form-check">
                     <Checkbox name="remember" className="form-check-input" checked={data.remember} onChange={(e) => setData('remember', e.target.checked)}/>
