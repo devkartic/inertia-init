@@ -9,8 +9,8 @@ export default function Authenticated({ user, header, children }) {
             <Header user={user}/>
             <div className="container-fluid bg-light">
                 <div className="row">
-                    <div className="col-md-2 bg-success">Left Sidebar</div>
-                    <div className="col-md-10 bg-danger">
+                    <div className="col-lg-2 col-md-3 bg-success">Left Sidebar</div>
+                    <div className="col-lg-10 col-md-9 bg-danger">
                         {children}
                     </div>
                 </div>

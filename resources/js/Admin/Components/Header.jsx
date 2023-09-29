@@ -1,15 +1,21 @@
 import { Link } from '@inertiajs/react';
 import CustomComponent from "@/Admin/Components/CustomComponent.jsx";
+import Sidebar from "@/Admin/Components/Sidebar.jsx";
+
 
 export default function Header({user}) {
     return (
         <>
             <div className="container-fluid bg-info">
                 <div className="row">
-                    <div className="col-md-2 bg-primary d-flex align-items-center">
-                        <div className="d-inline-flex p-2 fs-4 fw-bold">E-Shop Admin</div>
+                    <div className="col-lg-2 col-md-3 bg-primary d-flex align-items-center py-2">
+                        <div className="d-inline-flex p-2 fs-4 fw-bold  d-none d-lg-block d-md-block">E-Shop Admin</div>
+                        <button className="btn btn-light d-block d-lg-none d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAdminSidebar" aria-controls="offcanvasAdminSidebar">
+                            <i className="fa-solid fa-bars"></i>
+                        </button>
+                        <Sidebar/>
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-lg-10 col-md-9">
                         <div className="container-fluid bg-info">
                             <nav className="navbar navbar-expand-lg">
                                 <div className="container-fluid">
