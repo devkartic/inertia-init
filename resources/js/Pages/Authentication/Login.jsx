@@ -1,11 +1,9 @@
 import {useEffect} from 'react';
-import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Admin/Layouts/GuestLayout.jsx';
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
 import {Head, Link, useForm} from '@inertiajs/react';
+import {Row, Col, FloatingLabel, Form} from 'react-bootstrap';
 
 export default function Login({status, canResetPassword}) {
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -33,30 +31,43 @@ export default function Login({status, canResetPassword}) {
             {status && <div className="alert alert-warning" role="alert">{status}</div>}
 
             <form onSubmit={submit}>
-                <div className="form-floating mb-3">
-                    <TextInput type="email" name="email" className="form-control" id="floatingEmail" autoComplete="email" value={data.email} onChange={(e) => setData('email', e.target.value)}/>
-                    <InputLabel htmlFor="floatingEmail">Email</InputLabel>
-                    <InputError className="form-text text-danger" message={errors.email}/>
-                </div>
-                <div className="form-floating mb-3 ">
-                    <TextInput type="password" className="form-control" id="floatingPassword" autoComplete="current-password" value={data.password} onChange={(e) => setData('password', e.target.value)}/>
-                    <InputLabel htmlFor="floatingPassword">Password</InputLabel>
-                    <InputError className="form-text text-danger" message={errors.password}/>
-                </div>
-                <div className="mb-3 form-check">
-                    <Checkbox name="remember" className="form-check-input" id="rememberCheck" checked={data.remember} onChange={(e) => setData('remember', e.target.checked)}/>
-                    <InputLabel className="form-check-label" htmlFor="rememberCheck">Remember me</InputLabel>
-                </div>
-                <div className="mb-3 form-label">
-                    <Link className="text-decoration-none" href={route('password.request')}>Forgot your password?</Link>
-                </div>
-                <div className="d-grid">
-                    <PrimaryButton className="btn btn-primary px-md-4" disabled={processing}>Log In</PrimaryButton>
-                </div>
+                <Row className="mb-3">
+                    <Col md>
+                        <FloatingLabel controlId="floatingInputEmail" label="Email">
+                            <Form.Control type="email" name="email" placeholder="Email" autoComplete="email" value={data.email} onChange={(e) => setData('email', e.target.value)} autoFocus={true}/>
+                            <InputError className="form-text text-danger" message={errors.email}/>
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <FloatingLabel controlId="floatingInputPassowrd" label="Password">
+                            <Form.Control type="password" name="password" placeholder="Password" autoComplete="current-password" value={data.password} onChange={(e) => setData('password', e.target.value)}/>
+                            <InputError className="form-text text-danger" message={errors.password}/>
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <Form.Check name="remember" label="Remember me" checked={data.remember} onChange={(e) => setData('remember', e.target.checked)}/>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <Link className="text-decoration-none" href={route('password.request')}>Forgot your password?</Link>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md className="d-grid">
+                        <PrimaryButton className="btn btn-primary px-md-4" disabled={processing}>Log In</PrimaryButton>
+                    </Col>
+                </Row>
             </form>
-            <div className="mt-3">
-                <Link className="text-decoration-none" href={route('register')}>Register a new membership?</Link>
-            </div>
+            <Row className="mb-3">
+                <Col md>
+                    <Link className="text-decoration-none" href={route('register')}>Register a new membership?</Link>
+                </Col>
+            </Row>
         </GuestLayout>
     );
 }

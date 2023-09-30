@@ -1,14 +1,12 @@
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import GuestLayout from '@/Admin/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
-import Checkbox from "@/Components/Checkbox.jsx";
+import {Head, Link, useForm} from '@inertiajs/react';
+import {Col, FloatingLabel, Form, Row} from "react-bootstrap";
 
 export default function Register() {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const {data, setData, post, processing, errors, reset} = useForm({
         name: '',
         email: '',
         password: '',
@@ -29,40 +27,66 @@ export default function Register() {
 
     return (
         <GuestLayout>
-            <Head title="Register" />
+            <Head title="Register"/>
 
             <form onSubmit={submit}>
-                <div className="form-floating mb-3">
-                    <TextInput type="text" name="name" className="form-control" id="floatingName" autoComplete="name" value={data.name} onChange={(e) => setData('name', e.target.value)}/>
-                    <InputLabel htmlFor="floatingName">Name</InputLabel>
-                    <InputError className="form-text text-danger" message={errors.name}/>
-                </div>
-                <div className="form-floating mb-3">
-                    <TextInput type="email" name="email" className="form-control" id="floatingEmail" autoComplete="email" value={data.email} onChange={(e) => setData('email', e.target.value)}/>
-                    <InputLabel htmlFor="floatingEmail">Email</InputLabel>
-                    <InputError className="form-text text-danger" message={errors.email}/>
-                </div>
-                <div className="form-floating mb-3 ">
-                    <TextInput type="password" className="form-control" id="floatingPassword" autoComplete="new-password" value={data.password} onChange={(e) => setData('password', e.target.value)}/>
-                    <InputLabel htmlFor="floatingPassword">Password</InputLabel>
-                    <InputError className="form-text text-danger" message={errors.password}/>
-                </div>
-                <div className="form-floating mb-3 ">
-                    <TextInput type="password" className="form-control" id="password_confirmation" autoComplete="new-password" value={data.password_confirmation} onChange={(e) => setData('password_confirmation', e.target.value)}/>
-                    <InputLabel htmlFor="password_confirmation">Password</InputLabel>
-                    <InputError className="form-text text-danger" message={errors.password_confirmation}/>
-                </div>
-                <div className="mb-3 form-check">
-                    <Checkbox name="agree_terms" id="agreeTerms" className="form-check-input"/>
-                    <InputLabel className="form-check-label" htmlFor="agreeTerms">I agree to the terms</InputLabel>
-                </div>
-                <div className="d-grid">
-                    <PrimaryButton className="btn btn-primary px-4" disabled={processing}>Register</PrimaryButton>
-                </div>
+                <Row className="mb-3">
+                    <Col md>
+                        <FloatingLabel controlId="floatingInputName" label="Name">
+                            <Form.Control type="text" name="name" placeholder="Name" autoComplete="name"
+                                          value={data.name} onChange={(e) => setData('name', e.target.value)}
+                                          autoFocus={true}/>
+                            <InputError className="form-text text-danger" message={errors.name}/>
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <FloatingLabel controlId="floatingInputEmail" label="Email">
+                            <Form.Control type="email" name="email" placeholder="Email" autoComplete="email"
+                                          value={data.email} onChange={(e) => setData('email', e.target.value)}/>
+                            <InputError className="form-text text-danger" message={errors.email}/>
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <FloatingLabel controlId="floatingInputPassowrd" label="Password">
+                            <Form.Control type="password" name="password" placeholder="Password"
+                                          autoComplete="current-password" value={data.password}
+                                          onChange={(e) => setData('password', e.target.value)}/>
+                            <InputError className="form-text text-danger" message={errors.password}/>
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <FloatingLabel controlId="floatingInputPasswordConfirmation" label="Password">
+                            <Form.Control type="password" name="password_confirmation" placeholder="Re-Password"
+                                          autoComplete="new-password" value={data.password_confirmation}
+                                          onChange={(e) => setData('password_confirmation', e.target.value)}/>
+                            <InputError className="form-text text-danger" message={errors.password_confirmation}/>
+                        </FloatingLabel>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md>
+                        <Form.Check name="agree_terms" label="I agree to the terms" checked={data.agree_terms}
+                                    onChange={(e) => setData('agree_terms', e.target.checked)}/>
+                    </Col>
+                </Row>
+                <Row className="mb-3">
+                    <Col md className="d-grid">
+                        <PrimaryButton className="btn btn-primary px-4" disabled={processing}>Register</PrimaryButton>
+                    </Col>
+                </Row>
             </form>
-            <div className="mt-3">
-                <Link className="text-decoration-none" href={route('login')}>I already have a membership?</Link>
-            </div>
+
+            <Row className="mb-3">
+                <Col md>
+                    <Link className="text-decoration-none" href={route('login')}>I already have a membership?</Link>
+                </Col>
+            </Row>
         </GuestLayout>
     );
 }

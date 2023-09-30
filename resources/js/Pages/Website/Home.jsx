@@ -1,6 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 import Header from "@/Website/Components/Header.jsx";
 import Footer from "@/Website/Components/Footer.jsx";
+import {Container, Row, Col} from "react-bootstrap";
 
 
 export default function Home({ auth }) {
@@ -8,13 +9,13 @@ export default function Home({ auth }) {
         <>
             <Head title="Welcome" />
             <Header auth={auth}/>
-            <div className="container-fluid">
-                <div className="col">
-                    <div className="container py-12">
+            <Container fluid className="bg-light">
+                <Row className="col">
+                    <Col>
                         <p className="h1 text-center text-warning py-5">Coming Soon !!!</p>
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
             <Footer/>
         </>
     );
