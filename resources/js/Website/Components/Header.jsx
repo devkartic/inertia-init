@@ -36,8 +36,8 @@ export default function Header({auth}) {
                                     <Link className="btn btn-outline-primary me-2" href={route('dashboard')}>Dashboard</Link>
                                 ) : (
                                     <>
-                                        <Link className="btn btn-outline-primary me-2" href={route('login')}>Login</Link>
-                                        <Link className="btn btn-outline-primary" href={route('register')}>Register</Link>
+                                        <Link className="btn btn-primary me-2" href={route('login')}>Login</Link>
+                                        <Link className="btn btn-primary" href={route('register')}>Register</Link>
                                     </>
                                 )}
                             </div>

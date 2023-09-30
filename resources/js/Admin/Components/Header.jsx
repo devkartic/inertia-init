@@ -14,11 +14,11 @@ export default function Header({user}) {
                             <Dropdown>
                                 <Dropdown.Toggle variant="light" id="dropdown-basic">{user.name} </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                    <Dropdown.Item href={route('profile.edit')}>Profile</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                     <Dropdown.Divider></Dropdown.Divider>
-                                    <CustomComponent.Link className="dropdown-item text-left" href={route('logout')} method="post">Logout</CustomComponent.Link>
+                                    <CustomComponent.Link className="dropdown-item text-left" href={route('logout')} method="post" as="button">Logout</CustomComponent.Link>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
