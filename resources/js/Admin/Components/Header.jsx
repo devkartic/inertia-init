@@ -1,13 +1,16 @@
 import CustomComponent from "@/Admin/Components/CustomComponent.jsx";
-import {Container, Row, Col, Dropdown} from "react-bootstrap";
+import {Container, Row, Col, Dropdown, Button} from "react-bootstrap";
+import {FaBars} from "react-icons/fa6";
+import {Link} from "@inertiajs/react";
 
-export default function Header({user}) {
+export default function Header({user, onclick}) {
     return (
         <>
             <Container fluid>
                 <Row>
                     <Col lg={2} md={3} className="bg-primary">
-                        <div className="p-2 fs-4 fw-bold">E-Shop</div>
+                        <div className="p-2 fs-4 fw-bold d-none d-md-block"><Link className="text-warning text-decoration-none" href={route('dashboard')}>E-Shop Admin</Link></div>
+                        <Button variant="primary" className="p-2 fs-4 fw-bold d-block d-md-none" onClick={onclick}><FaBars/></Button>
                     </Col>
                     <Col lg={10} md={9} className="bg-info">
                         <div className="d-flex p-2 justify-content-end">

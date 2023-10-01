@@ -1,21 +1,13 @@
-import {useState} from 'react';
 import {Offcanvas} from "react-bootstrap";
-
-export default function Sidebar({props}){
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    return (
+export default function Sidebar({showSidebar, onclick, children}){
+       return (
         <>
-            <Offcanvas show={show} onHide={handleClose}>
+            <Offcanvas show={showSidebar} onHide={onclick}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title>E-Shop</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
+                    {children}
                 </Offcanvas.Body>
             </Offcanvas>
         </>
