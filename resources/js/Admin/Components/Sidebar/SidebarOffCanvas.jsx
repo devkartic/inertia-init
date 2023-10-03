@@ -1,5 +1,5 @@
 import {Offcanvas} from "react-bootstrap";
-export default function Sidebar({showSidebar, onclick, children}){
+export default function SidebarOffCanvas({showSidebar, onclick, children}){
        return (
         <>
             <Offcanvas show={showSidebar} onHide={onclick}>

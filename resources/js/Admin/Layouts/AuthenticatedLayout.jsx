@@ -1,11 +1,10 @@
 import Header from "@/Admin/Components/Header.jsx";
 import Footer from "@/Admin/Components/Footer.jsx";
 import {Col, Container, Row, ListGroup} from "react-bootstrap";
-import fetchNodes from "@/Admin/Components/Sidebar/fetchNodes.jsx";
-import NestedListGroup from "@/Admin/Components/Sidebar/NestedListGroup.jsx";
-import Sidebar from "@/Admin/Components/Sidebar/Sidebar.jsx";
+import SidebarOffCanvas from "@/Admin/Components/Sidebar/SidebarOffCanvas.jsx";
+
 import {useState} from "react";
-const nodes = fetchNodes();
+import Sidebar from "@/Admin/Components/Sidebar/Sitebar.jsx";
 export default function Authenticated({ user, header, children }) {
     const [showSidebar, setShowSidebar] = useState(false);
     const handleCloseSidebar = () => setShowSidebar(false);
@@ -16,11 +15,11 @@ export default function Authenticated({ user, header, children }) {
             <Container fluid>
                 <Row>
                     <Col lg={2} md={3} className="bg-primary bg-opacity-75">
-                        <Sidebar class="d-block d-md-none" showSidebar={showSidebar} onclick={handleCloseSidebar}>
-                            <NestedListGroup nodes={nodes}/>
-                        </Sidebar>
+                        <SidebarOffCanvas class="d-block d-md-none" showSidebar={showSidebar} onclick={handleCloseSidebar}>
+                            <Sidebar/>
+                        </SidebarOffCanvas>
                         <div className="d-none d-md-block pt-md-2">
-                            <NestedListGroup nodes={nodes}/>
+                            <Sidebar/>
                         </div>
                     </Col>
                     <Col lg={10} md={9}  className="bg-light">
