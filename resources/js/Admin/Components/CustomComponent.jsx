@@ -6,7 +6,7 @@ function CustomComponent() {
     );
 }
 
-const CustomLink = ({className = '', children, ...props}) => {
+const LinkPostMethod = ({className = '', children, ...props}) => {
     return (
         <Link
             {...props}
@@ -17,6 +17,6 @@ const CustomLink = ({className = '', children, ...props}) => {
     );
 };
 
-CustomComponent.Link = CustomLink;
+CustomComponent.LinkPostMethod = LinkPostMethod;
 
 export default CustomComponent;

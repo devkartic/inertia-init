@@ -4,13 +4,13 @@ import {
     FaAngleDown,
     FaLink,
 } from "react-icons/fa";
-
+import { Link } from "@inertiajs/react";
 const leaf = { paddingLeft: "30px" };
 const branch = { paddingLeft: "15px" };
 
 const Leaf = ({ url, label }, idx) => {
     return (
-        <a
+        <Link
             href={url}
             className="list-group-item"
             style={leaf}
@@ -18,7 +18,7 @@ const Leaf = ({ url, label }, idx) => {
             onClick={() => alert(url)}
         >
             <FaLink /> {label}
-        </a>
+        </Link>
     );
 };
 

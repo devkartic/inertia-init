@@ -21,7 +21,7 @@ export default function Header({user, onclick}) {
                                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                     <Dropdown.Divider></Dropdown.Divider>
-                                    <CustomComponent.Link className="dropdown-item text-left" href={route('logout')} method="post" as="button">Logout</CustomComponent.Link>
+                                    <CustomComponent.LinkPostMethod className="dropdown-item text-left" href={route('logout')} method="post" as="button">Logout</CustomComponent.LinkPostMethod>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
