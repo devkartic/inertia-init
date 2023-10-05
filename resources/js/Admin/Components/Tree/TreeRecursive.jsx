@@ -1,16 +1,22 @@
 import React, {useState} from 'react';
 import {FaAngleDown, FaAngleRight, FaLink} from "react-icons/fa";
-const TreeNode = ({leaf, label, children}) => {
+import {Link} from "@inertiajs/react";
+const TreeNode = ({leaf, label, url, children}) => {
     const [open, setOpen] = useState(false);
+    const handleOnclickEvent = (e) => {
+        setOpen(!open);
+        if(e.target.getAttribute('href') ==="") e.preventDefault();
+    }
     return (
         <>
-            <div
+            <Link
+                href={url}
                 style={leaf}
                 className="list-group-item"
-                onClick={() => setOpen(!open)}
+                onClick={handleOnclickEvent}
             >
                 {children ? open ? <FaAngleDown/> : <FaAngleRight/> : <FaLink/>} {label}
-            </div>
+            </Link>
             {open && <>{children}</>}
         </>
     );
@@ -20,7 +26,7 @@ const TreeRecursive = ({data, level = 1}) => {
     return (
         <>
             {data.map((node) => (
-                <TreeNode label={node.label} key={node.id} leaf={leaf}>
+                <TreeNode label={node.label} url={node.url} key={node.id} leaf={leaf}>
                     {node.children && <TreeRecursive data={node.children} level={level + 1}/>}
                 </TreeNode>
             ))}

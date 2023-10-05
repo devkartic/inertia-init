@@ -5,34 +5,41 @@ const Sidebar = () => {
         {
             id: 1,
             label: 'Access Control',
+            url: '#',
             children: [
                 {
                     id: 2,
                     label: 'User',
+                    url: 'dashboard',
                 }
             ],
         },
         {
             id: 3,
             label: 'General',
+            url: '#',
             children: [
                 {
                     id: 4,
                     label: 'Basic',
+                    url: 'dashboard',
                 }
             ],
         },
         {
             id: 5,
             label: 'Inventory',
+            url: '#',
             children: [
                 {
                     id: 6,
                     label: 'Product Categories',
+                    url: 'dashboard',
                 },
                 {
                     id: 6,
                     label: 'Products',
+                    url: 'dashboard',
                 },
             ],
         },
