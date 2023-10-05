@@ -22,8 +22,11 @@ export default function Authenticated({ user, header, children }) {
                             <Sidebar/>
                         </div>
                     </Col>
-                    <Col lg={10} md={9}  className="bg-light">
-                        {children}
+                    <Col lg={10} md={9}  className="bg-light py-2">
+                        {header}
+                        <div className="container-fluid bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            {children}
+                        </div>
                     </Col>
                 </Row>
             </Container>
