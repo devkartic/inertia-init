@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Admin/Layouts/AuthenticatedLayout.jsx';
 import { Head } from '@inertiajs/react';
 import {Button, Table} from "react-bootstrap";
 import {FaEye, FaEdit, FaTrash} from "react-icons/fa";
-import moment from 'moment';
+import {FormatDateTime} from "@/Admin/Components/FormatDateTime.jsx";
 export default function Users({ auth, users }) {
     console.log(users);
     return (
@@ -31,8 +31,8 @@ export default function Users({ auth, users }) {
                                 <td>{++index}</td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{moment(user.created_at).format('LL, hh:mm:ss A')}</td>
-                                <td>{moment(user.updated_at).format('LL, hh:mm:ss A')}</td>
+                                <td><FormatDateTime date={user.created_at}/></td>
+                                <td><FormatDateTime date={user.updated_at}/></td>
                                 <td>
                                     <>
                                         <Button variant="outline-info"><FaEye/></Button>{' '}
