@@ -1,16 +1,18 @@
 import AuthenticatedLayout from '@/Admin/Layouts/AuthenticatedLayout.jsx';
-import { Head } from '@inertiajs/react';
+import {Head, Link} from '@inertiajs/react';
 import {Button, Table} from "react-bootstrap";
 import {FaEye, FaEdit, FaTrash} from "react-icons/fa";
 import {FormatDateTime} from "@/Admin/Components/FormatDateTime.jsx";
-export default function Users({ auth, users }) {
+import {PageTitle} from "@/Admin/Components/PageTitle.jsx";
+
+export default function Index({auth, users}) {
     console.log(users);
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h3 className="font-semibold text-xl text-gray-800 leading-tight">Users List</h3>}
+            header={<PageTitle title="User List" route={route('users.create')}/>}
         >
-            <Head title="Users" />
+            <Head title="Users"/>
 
             <div className="row">
                 <Table responsive="sm">
@@ -25,7 +27,7 @@ export default function Users({ auth, users }) {
                     </tr>
                     </thead>
                     <tbody>
-                    {users.map((user, index)=>{
+                    {users.map((user, index) => {
                         return (
                             <tr key={index}>
                                 <td>{++index}</td>
@@ -35,9 +37,9 @@ export default function Users({ auth, users }) {
                                 <td><FormatDateTime date={user.updated_at}/></td>
                                 <td>
                                     <>
-                                        <Button variant="outline-info"><FaEye/></Button>{' '}
-                                        <Button variant="outline-warning"><FaEdit/></Button>{' '}
-                                        <Button variant="outline-danger"><FaTrash/></Button>
+                                        <Link href="#" className="btn btn-sm btn-outline-info"><FaEye/></Link>{' '}
+                                        <Link href={route('users.edit', user.id)} className="btn btn-sm btn-outline-warning"><FaEdit/></Link>{' '}
+                                        <Link href="#" className="btn btn-sm btn-outline-danger"><FaTrash/></Link>
                                     </>
                                 </td>
                             </tr>

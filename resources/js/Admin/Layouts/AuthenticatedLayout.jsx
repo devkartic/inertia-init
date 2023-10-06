@@ -24,7 +24,7 @@ export default function Authenticated({ user, header, children }) {
                     </Col>
                     <Col lg={10} md={9}  className="bg-light py-2">
                         {header}
-                        <div className="container-fluid bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="container-fluid bg-white overflow-hidden shadow-sm sm:rounded-lg rounded-1">
                             {children}
                         </div>
                     </Col>

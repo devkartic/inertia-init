@@ -10,7 +10,7 @@ const Sidebar = () => {
                 {
                     id: 2,
                     label: 'User',
-                    url: 'users',
+                    url: route('users.index'),
                 }
             ],
         },
