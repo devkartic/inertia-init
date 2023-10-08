@@ -8,11 +8,11 @@ export default function Header({user, onclick}) {
         <>
             <Container fluid>
                 <Row>
-                    <Col lg={2} md={3} className="bg-primary">
+                    <Col lg={2} md={3} sm={2} xs={2} className="bg-primary">
                         <div className="p-2 fs-4 fw-bold d-none d-md-block"><Link className="text-warning text-decoration-none" href={route('dashboard')}>E-Shop Admin</Link></div>
                         <Button variant="primary" className="p-2 fs-4 fw-bold d-block d-md-none" onClick={onclick}><FaBars/></Button>
                     </Col>
-                    <Col lg={10} md={9} className="bg-info">
+                    <Col className="bg-info">
                         <div className="d-flex p-2 justify-content-end">
                             <Dropdown>
                                 <Dropdown.Toggle variant="light" id="dropdown-basic">{user.name} </Dropdown.Toggle>

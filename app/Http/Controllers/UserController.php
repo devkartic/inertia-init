@@ -72,16 +72,17 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+//            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+//        $user->password = Hash::make($request->password);
 
         $user->save();
 
-        return $this->index();
+        return redirect()->back()->with('message', 'User Updated Successfully');
+
     }
 
     /**

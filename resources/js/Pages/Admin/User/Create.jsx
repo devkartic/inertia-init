@@ -6,6 +6,7 @@ import InputError from "@/Components/InputError.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
 import {useEffect} from "react";
 import {Transition} from '@headlessui/react';
+import {MessageAlert} from "@/Admin/Components/MessageAlert.jsx";
 
 export default function Create({auth}) {
     const {data, setData, post, processing, errors, reset} = useForm({
@@ -17,7 +18,7 @@ export default function Create({auth}) {
 
     useEffect(() => {
         return () => {
-            reset('password', 'password_confirmation');
+            reset('name', 'email', 'password', 'password_confirmation');
         };
     }, []);
 
@@ -34,8 +35,9 @@ export default function Create({auth}) {
             <Head title="Create User"/>
 
             <div className="row">
-                <div className="col-md-12 p-5">
-                    <form className="py-3" onSubmit={submit}>
+                <div className="col-md-12 py-3">
+                    <MessageAlert variant="success" message="testing"/>
+                    <form onSubmit={submit}>
                         <Row className="mb-3">
                             <Col md>
                                 <FloatingLabel controlId="floatingInputName" label="Name">
@@ -49,7 +51,7 @@ export default function Create({auth}) {
                         <Row className="mb-3">
                             <Col md>
                                 <FloatingLabel controlId="floatingInputEmail" label="Email">
-                                    <Form.Control type="email" name="email" placeholder="Email" autoComplete="email"
+                                    <Form.Control type="email" name="email" placeholder="Email" autoComplete="new-email"
                                                   value={data.email}
                                                   onChange={(e) => setData('email', e.target.value)}/>
                                     <InputError className="form-text text-danger" message={errors.email}/>
@@ -60,7 +62,7 @@ export default function Create({auth}) {
                             <Col md>
                                 <FloatingLabel controlId="floatingInputPassowrd" label="Password">
                                     <Form.Control type="password" name="password" placeholder="Password"
-                                                  autoComplete="current-password" value={data.password}
+                                                  autoComplete="new-password" value={data.password}
                                                   onChange={(e) => setData('password', e.target.value)}/>
                                     <InputError className="form-text text-danger" message={errors.password}/>
                                 </FloatingLabel>

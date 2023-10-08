@@ -6,14 +6,18 @@ import InputError from "@/Components/InputError.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
 import {useEffect} from "react";
 import {Transition} from '@headlessui/react';
+import {MessageAlert} from "@/Admin/Components/MessageAlert.jsx";
 
-export default function Edit({auth, user}) {
+export default function Edit({auth, user, message}) {
     const {data, setData, patch, processing, errors, reset} = useForm({
         name: user.name,
         email: user.email,
         password: '',
         password_confirmation: '',
+        message
     });
+
+    console.log(message);
 
     useEffect(() => {
         return () => {
@@ -32,10 +36,10 @@ export default function Edit({auth, user}) {
             header={<PageTitle title="User Edit"/>}
         >
             <Head title="Edit User"/>
-
             <div className="row">
-                <div className="col-md-12 p-5">
-                    <form className="py-3" onSubmit={submit}>
+                <div className="col-md-12 py-3">
+                    <MessageAlert variant="success" message={message}/>
+                    <form onSubmit={submit}>
                         <Row className="mb-3">
                             <Col md>
                                 <FloatingLabel controlId="floatingInputName" label="Name">
