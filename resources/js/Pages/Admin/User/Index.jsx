@@ -6,7 +6,7 @@ import {FormatDateTime} from "@/Admin/Components/FormatDateTime.jsx";
 import {PageTitle} from "@/Admin/Components/PageTitle.jsx";
 
 export default function Index({auth, users}) {
-    console.log(users);
+    // console.log(users);
     return (
         <AuthenticatedLayout
             user={auth.user}

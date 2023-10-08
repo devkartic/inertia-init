@@ -83,7 +83,7 @@ export default function Edit({auth, user, flash}) {
                         <Row className="mb-3">
                             <Col md className="d-block">
                                 <PrimaryButton className="btn btn-primary px-4"
-                                               disabled={processing}>Submit</PrimaryButton>
+                                               disabled={processing}>Update</PrimaryButton>
                             </Col>
                         </Row>
                     </form>
