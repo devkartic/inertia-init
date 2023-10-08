@@ -4,11 +4,11 @@ import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import {PageTitle} from "@/Admin/Components/PageTitle.jsx";
 import InputError from "@/Components/InputError.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {Transition} from '@headlessui/react';
 import {MessageAlert} from "@/Admin/Components/MessageAlert.jsx";
 
-export default function Create({auth}) {
+export default function Create({auth, flash}) {
     const {data, setData, post, processing, errors, reset} = useForm({
         name: '',
         email: '',
@@ -34,9 +34,10 @@ export default function Create({auth}) {
         >
             <Head title="Create User"/>
 
+            {flash && flash.success && <MessageAlert variant="success" message={flash.success} />}
+
             <div className="row">
                 <div className="col-md-12 py-3">
-                    <MessageAlert variant="success" message="testing"/>
                     <form onSubmit={submit}>
                         <Row className="mb-3">
                             <Col md>

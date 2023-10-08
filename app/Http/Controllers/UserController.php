@@ -44,7 +44,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return $this->index();
+        return redirect()->back()->with('success', 'User created successfully.');
 
     }
 
@@ -81,7 +81,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with('message', 'User Updated Successfully');
+        return redirect()->back()->with('success', 'User updated successfully.');
 
     }
 

@@ -4,20 +4,17 @@ import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import {PageTitle} from "@/Admin/Components/PageTitle.jsx";
 import InputError from "@/Components/InputError.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {Transition} from '@headlessui/react';
 import {MessageAlert} from "@/Admin/Components/MessageAlert.jsx";
 
-export default function Edit({auth, user, message}) {
+export default function Edit({auth, user, flash}) {
     const {data, setData, patch, processing, errors, reset} = useForm({
         name: user.name,
         email: user.email,
         password: '',
         password_confirmation: '',
-        message
     });
-
-    console.log(message);
 
     useEffect(() => {
         return () => {
@@ -36,9 +33,11 @@ export default function Edit({auth, user, message}) {
             header={<PageTitle title="User Edit"/>}
         >
             <Head title="Edit User"/>
+
+            {flash && flash.success && <MessageAlert variant="success" message={flash.success} />}
+
             <div className="row">
                 <div className="col-md-12 py-3">
-                    <MessageAlert variant="success" message={message}/>
                     <form onSubmit={submit}>
                         <Row className="mb-3">
                             <Col md>
