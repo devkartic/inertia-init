@@ -4,6 +4,7 @@ import {Button, Table} from "react-bootstrap";
 import {FaEye, FaEdit, FaTrash} from "react-icons/fa";
 import {FormatDateTime} from "@/Admin/Components/FormatDateTime.jsx";
 import {PageTitle} from "@/Admin/Components/PageTitle.jsx";
+import {DeleteForm} from "@/Admin/DeleteForm.jsx";
 
 export default function Index({auth, users}) {
     // console.log(users);
@@ -39,7 +40,7 @@ export default function Index({auth, users}) {
                                     <>
                                         <Link href="#" className="btn btn-sm btn-outline-info"><FaEye/></Link>{' '}
                                         <Link href={route('users.edit', user.id)} className="btn btn-sm btn-outline-warning"><FaEdit/></Link>{' '}
-                                        <Link href="#" className="btn btn-sm btn-outline-danger"><FaTrash/></Link>
+                                        <DeleteForm href={`users/${user.id}`} />
                                     </>
                                 </td>
                             </tr>
